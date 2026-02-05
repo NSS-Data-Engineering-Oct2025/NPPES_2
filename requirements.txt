@@ -1,0 +1,11 @@
+pandas
+polars
+duckdb
+psycopg2-binary
+python-dotenv
+boto3
+pyarrow
+dbt-core
+dbt-duckdb
+requests
+s3fs
