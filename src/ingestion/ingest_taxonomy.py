@@ -2,13 +2,16 @@ import logging, io
 import boto3
 import pandas as pd
 import duckdb
+import os
+from dotenv import load_dotenv      
+load_dotenv()
 
 logger = logging.getLogger()
 
 # AWS session
 def load_nucc_taxonomy():
     
-    session = boto3.Session(profile_name="First_Project")
+    session = boto3.Session(profile_name=os.getenv("AWS_PROFILE"))
     s3 = session.resource("s3")
 
     bucket = "de-project2-nppes"
