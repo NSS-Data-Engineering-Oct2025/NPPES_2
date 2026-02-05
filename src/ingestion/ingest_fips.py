@@ -4,42 +4,42 @@ import pandas as pd
 import duckdb
 import os
 from dotenv import load_dotenv
-load_dotenv()
+
 
 load_dotenv()
+
 logger = logging.getLogger()
 
+def load_fips_data():
 # AWS session
-def load_nucc_taxonomy():
-    
     session = boto3.Session(profile_name=os.getenv("AWS_PROFILE"))
     s3 = session.resource("s3")
 
     bucket = "de-project2-nppes"
-    key = "kssnppes2/nucc_taxonomy_250.csv"
+    key = "kssnppes2/ssa_fips_state_county_2025.csv"
 
-    # NUCC Taxonomy 250
+# NUCC Taxonomy 250
 
     obj = s3.Object(bucket, key)
     data = obj.get().get("Body").read()
-    df_nucc_taxonomy_250 = pd.read_csv(io.BytesIO(data))
+    df_fips = pd.read_csv(io.BytesIO(data))
 
-    # DuckDB: register df then create table
+# DuckDB: register df then create table
 
     duckdb_conn = duckdb.connect("dev.duckdb")
-    duckdb_conn.register("df_nucc_taxonomy_250", df_nucc_taxonomy_250)
-
+    duckdb_conn.register("df_fips", df_fips)
+    
     duckdb_conn.execute(" CREATE SCHEMA IF NOT EXISTS raw;")
 
+
     duckdb_conn.execute("""
-        CREATE OR REPLACE TABLE raw.nucc_taxonomy_250 AS
-        SELECT * FROM df_nucc_taxonomy_250 
+        CREATE OR REPLACE TABLE raw.fips AS
+        SELECT * FROM df_fips 
     """)
 
-    nucc_taxonomy_250 = duckdb_conn.execute("SELECT * FROM raw.nucc_taxonomy_250").fetchdf()
-    print(nucc_taxonomy_250.head(4))  
+    fips = duckdb_conn.execute("SELECT * FROM raw.fips").fetchdf()
+    print(fips.head())  
     duckdb_conn.close()
 
 if __name__ == "__main__":
-    load_nucc_taxonomy()
-    
+    load_fips_data()

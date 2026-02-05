@@ -6,6 +6,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+load_dotenv()
+
+load_dotenv()
 logger = logging.getLogger()
 
 def load_nppes_data():
