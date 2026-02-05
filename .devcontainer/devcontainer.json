@@ -1,11 +1,11 @@
 {
   "name": "Data Engineering NPPES Project",
   "image": "mcr.microsoft.com/devcontainers/python:3.13",
-  
+
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {}
   },
-  
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -18,8 +18,8 @@
       }
     }
   },
-  
+
   "postCreateCommand": "pip install -r requirements.txt",
-  
+
   "remoteUser": "vscode"
 }
