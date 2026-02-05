@@ -1,11 +1,11 @@
-pandas
 polars
-duckdb
-psycopg2-binary
-python-dotenv
+dotenv
 boto3
+duckdb
 pyarrow
 dbt-core
 dbt-duckdb
-requests
-s3fs
+numpy
+pandas
+fastexcel
+sqlalchemy
