@@ -2,12 +2,16 @@ import logging, io
 import boto3
 import pandas as pd
 import duckdb
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = logging.getLogger()
 
 def load_nppes_data():
 # AWS session
-    session = boto3.Session(profile_name="First_Project")
+    session = boto3.Session(profile_name=os.getenv("AWS_PROFILE"))
     s3 = session.resource("s3")
 
     bucket = "de-project2-nppes"
