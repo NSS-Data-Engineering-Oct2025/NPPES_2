@@ -32,7 +32,7 @@ def extract_census_data():
     logger.info("Extracting census data from API...")
 
     try:
-        response = requests.get(BASE_URL, params=params)
+        response = requests.get(BASE_URL, params=params) # schema means columns in polars
         response.raise_for_status()
 
         data = response.json()
