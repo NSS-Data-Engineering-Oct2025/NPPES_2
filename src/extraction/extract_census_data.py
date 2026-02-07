@@ -40,7 +40,7 @@ def extract_census_data():
         headers = data[0]
         rows = data[1:]
 
-        census = pl.DataFrame(rows, schema=headers, orient="row")
+        census = pl.DataFrame(rows, schema=headers, orient="row")  # schema means columns in polars
 
         census = census.rename({
             "B01003_001E": "total_population",
