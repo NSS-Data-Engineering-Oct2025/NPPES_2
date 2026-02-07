@@ -11,7 +11,7 @@ def my_logger():
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
 
-    file_handler = logging.FileHandler('healthcare_pipeline.log')
+    file_handler = logging.FileHandler('src/healthcare_pipeline.log')
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
@@ -19,9 +19,5 @@ def my_logger():
     return logger
 
 if __name__ == "__main__":
-    logger = setup_logger()
-
-    logger.info("Testing my logger..")
-    logger.warning("This is a warning message.")
-    logger.error("This is an error message.")
+    logger = my_logger()
 
