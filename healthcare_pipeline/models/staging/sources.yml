@@ -1,0 +1,21 @@
+souces:
+  - name: raw
+    description: "Raw data from Datagrip database"
+    schema: raw
+    tables:
+    # Reference Data
+      - name: nppes
+        description: "NPPES data from Datagrip database"
+
+      - name: fips
+        description: "Federal Information Processing Standards (FIPS) codes for US counties"
+
+      - name: nucc_taxonomy_250
+        description: "Healthcare provider taxonomy codes and descriptions"
+
+      - name: zip_county
+        description: "Mapping of ZIP codes to county FIPS codes"
+
+      - name: census
+        description: "US Census data for population and demographics"
+        
